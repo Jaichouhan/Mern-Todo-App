@@ -9,7 +9,7 @@ app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 const todoRoutes = require("./routes/route");
-app.use("/todos", todoRoutes);
+app.use("/", todoRoutes);
 
 const database =
   "mongodb+srv://jaichouhan:1ap7R5L3xiPz4Pa5@cluster0.7wnnt.mongodb.net/?retryWrites=true&w=majority";
