@@ -8,7 +8,13 @@ function App() {
   const [content, setContent] = useState("");
   const [currentId, setCurrentId] = useState(0);
 
-  useEffect(() => {}, [currentId]);
+  useEffect(() => {
+    let currentTodo =
+      currentId != 0 ? todo.find((todo) => todo._id === currentId) : null;
+    setToda(currentTodo);
+  }, [currentId]);
+
+  console.log(todo);
 
   useEffect(() => {
     axios
@@ -72,7 +78,12 @@ function App() {
       <div className="collection">
         {todo &&
           todo.map((data, i) => (
-            <a href="#!" className="collection-item" key={i}>
+            <a
+              href="#!"
+              className="collection-item"
+              key={i}
+              onClick={() => setCurrentId(data._id)}
+            >
               {data.title} {data.content}
             </a>
           ))}
